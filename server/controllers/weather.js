@@ -1,12 +1,11 @@
 var request = require('request');
 
-const url = 'http://api.wunderground.com/api/';
+const url = 'http://autocomplete.wunderground.com/aq?query=';
 
 var weatherInfo = function(req,res) {
-  var query_city = req.params.city;
-  var query_state = req.params.state;
+  var query = req.query.location;
   var options = {
-    url: url + `${process.env.API_KEY}/forecast/geolookup/q/${query_state}/${query_city}.json`
+    url: url + query
   };
   console.log(options);
   request(options, function(err, response, body){
