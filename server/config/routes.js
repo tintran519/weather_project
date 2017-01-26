@@ -5,6 +5,6 @@ var express = require('express');
 var weatherController = require('../controllers/weather');
 
 //retrieve weather api here
-router.get('/weather/:state/:city', weatherController.weatherInfo);
+router.get('/weather', weatherController.weatherInfo);
 
 module.exports = router;
