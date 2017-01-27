@@ -1,3 +1,20 @@
-form {
+form, h4 {
   color: white;
+}
+
+.form-group {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 45px;
+}
+
+li {
+  color: white;
+  list-style: none;
+  padding: 2px;
+  margin-right: 5%;
+}
+
+li:hover {
+  cursor: pointer;
 }
