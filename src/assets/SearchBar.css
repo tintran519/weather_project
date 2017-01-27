@@ -1,4 +1,4 @@
-form {
+form, h4 {
   color: white;
 }
 
@@ -12,6 +12,7 @@ li {
   color: white;
   list-style: none;
   padding: 2px;
+  margin-right: 5%;
 }
 
 li:hover {

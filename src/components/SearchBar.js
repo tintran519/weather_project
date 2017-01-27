@@ -80,7 +80,7 @@ class SearchBar extends React.Component {
              />
           </div>
         </form>
-
+        {this.state.list.length === 0 ? null : <h4>Search Results</h4>}
         <ul>
           {this.renderLocations()}
         </ul>
