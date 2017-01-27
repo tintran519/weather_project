@@ -29,7 +29,7 @@ class SearchBar extends React.Component {
   renderLocations() {
     // console.log(this.state.list)
     return this.state.list.map((location,index) =>
-      <option value={location.name} key={index} />
+      <option value={location.name} key={index} data-link={location.l} ref="selectedLocation" />
       )
   };
 
@@ -38,7 +38,7 @@ class SearchBar extends React.Component {
     this.setState({
       [e.target.name]: e.target.value
     })
-    fetch(`/weather?location=${this.state.location}`)
+    fetch(`/location?q=${this.state.location}`)
       .then(function(response){
         if(response.status >= 400) {
           throw new Error("Bad response from server");
@@ -53,17 +53,24 @@ class SearchBar extends React.Component {
 
   submitSearch(e) {
     e.preventDefault();
-    console.log('submit',this.state.location);
-    // fetch(`/weather?location=${this.state.location}`)
-    //   .then(function(response){
-    //     if(response.status >= 400) {
-    //       throw new Error("Bad response from server");
-    //     }
-    //     return response.json();
-    //   })
-    //   .then(function(results) {
-    //     console.log('API call',results);
-    //   });
+    let submitLocation = this.state.location
+    let link = this.refs.selectedLocation.dataset.link;
+    let cities = submitLocation.substr(0, submitLocation.indexOf(','));
+    let states = submitLocation.substr(submitLocation.indexOf(',') + 2);
+
+    console.log('city and state', cities, states);
+    // console.log('submit',this.state.location);
+    // console.log('ref',this.refs.selectedLocation.dataset.link);
+    fetch(`/weather/${states}/${cities}?link=${link}`)
+      .then(function(response){
+        if(response.status >= 400) {
+          throw new Error("Bad response from server");
+        }
+        return response.json();
+      })
+      .then(function(results) {
+        console.log('API call',results);
+      });
   }
 
   render() {
