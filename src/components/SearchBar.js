@@ -2,6 +2,7 @@ import React, {components} from 'react';
 import '../assets/SearchBar.css'
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
+import { browserHistory } from 'react-router';
 
 
 class SearchBar extends React.Component {
@@ -14,11 +15,19 @@ class SearchBar extends React.Component {
   }
 
   renderLocations() {
-    // console.log(this.state.list)
     return this.state.list.map((location,index) =>
-      <li key={index}>{location.name}</li>
+      <li key={index} ref={location.name} onClick={this.selectLocation.bind(this,location)}>{location.name}</li>
       )
   };
+
+  selectLocation(item) {
+    console.log(item);
+    // this.props.clickedLocation(item);
+    browserHistory.push({
+      pathname: '/weather',
+      state: item
+    })
+  }
 
   changeLocation(e) {
     this.setState({
@@ -38,7 +47,7 @@ class SearchBar extends React.Component {
         return response.json();
       })
       .then(function(results) {
-        _this.setState({ list: results.RESULTS })
+        _this.setState({ location: '', list: results.RESULTS })
         console.log('API call',results.RESULTS);
       });
     // let submitLocation = this.state.location;
