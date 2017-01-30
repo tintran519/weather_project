@@ -25,7 +25,9 @@ class SearchBar extends React.Component {
     // this.props.clickedLocation(item);
     browserHistory.push({
       pathname: '/weather',
-      state: item
+      state:{
+        selectedLocation: item
+      }
     })
   }
 

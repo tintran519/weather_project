@@ -1,0 +1,12 @@
+.mainWrapper {
+  margin-left: 2%;
+  color: white;
+}
+
+.header-bot,.header-top {
+  text-align: left;
+}
+
+.header-bot {
+  margin-top: 15%;
+}
