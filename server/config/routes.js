@@ -6,6 +6,6 @@ var weatherController = require('../controllers/weather');
 
 //retrieve weather api here
 router.get('/location', weatherController.locationList);
-router.get('/weather/:state/:city', weatherController.weatherInfo);
+router.get('/weather/:zmw', weatherController.weatherInfo);
 
 module.exports = router;

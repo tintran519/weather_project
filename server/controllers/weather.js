@@ -13,9 +13,10 @@ var locationList = function(req,res) {
 }
 
 var weatherInfo = function(req,res) {
-  var locationLink = req.query.link;
+  'http://api.wunderground.com/api/f2164d39ab49397d/forecast/q/zmw:94125.1.99999.json'
+  var locationLink = req.params.zmw;
   var options = {
-    url: 'http://api.wunderground.com/api/' + process.env.API_KEY + '/forecast'+ locationLink + '.json'
+    url: 'http://api.wunderground.com/api/' + process.env.API_KEY + '/forecast/q/zmw:'+ req.params.zmw + '.json'
   };
   console.log(options);
   request(options, function(err, response, body) {
