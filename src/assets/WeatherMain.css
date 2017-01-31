@@ -3,6 +3,25 @@
   color: white;
 }
 
+#locationName {
+  display: inline-block;
+  margin-right: 2%;
+  margin-bottom: 0px;
+}
+
+#locationChange {
+  display: inline-block;
+  padding: 6px;
+}
+
+button {
+  background-color: rgba(117, 108, 108, 0.61);
+}
+
+.locationPicker {
+  color: gold;
+}
+
 .header-bot,.header-top {
   text-align: left;
 }
