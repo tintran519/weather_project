@@ -26,13 +26,34 @@ button {
   text-align: left;
 }
 
+#currentTemp {
+  font-size: 50pt;
+}
+
+#currentHigh {
+  margin-right: 2%;
+}
+
+#currentHigh,#currentLow {
+  font-size: 19pt;
+}
+
 .header-bot {
   margin-top: 15%;
 }
 
-#forecastTable {
+.forecastWrapper {
   background-color: seagreen;
-  border: 1px solid white;
+}
+
+th {
+  font-size: 14pt;
+  font-weight: normal;
+  padding-bottom: 8px;
+  border-bottom: 1px solid white;
+}
+
+#forecastTable {
   width: 100%;
   text-align: left;
 }

@@ -13,12 +13,14 @@ class WeatherMain extends React.Component{
       currentTemp:'',
       currentTempIcon:'',
       currentTempDescr: '',
-      forecast: []
+      forecast: [],
+      currentHigh: '',
+      currentLow: ''
     }
   }
 
   //load weather API
-  componentWillMount() {
+  componentDidMount() {
     let _this = this;
     fetch(`/weather/${this.props.location.state.selectedLocation.zmw}`)
       .then((response) => {
@@ -37,9 +39,11 @@ class WeatherMain extends React.Component{
           currentTemp: results.current_observation.temp_f,
           currentTempIcon: results.current_observation.icon_url,
           currentTempDescr: results.current_observation.weather,
-          forecast: results.forecast.simpleforecast.forecastday
+          forecast: results.forecast.simpleforecast.forecastday,
+          currentHigh: results.forecast.simpleforecast.forecastday[0].high.fahrenheit,
+          currentLow: results.forecast.simpleforecast.forecastday[0].low.fahrenheit
         })
-        console.log(this.state.forecast);
+        console.log(this.state.forecast[0].high.fahrenheit);
         console.log(this.props.location.state.selectedLocation.zmw)
         })
   }
@@ -49,7 +53,7 @@ class WeatherMain extends React.Component{
       <tr className="forecastRows" key={index}>
         <td>{day.date.weekday}</td>
         <td className="tempIcon"><img src={day.icon_url} /></td>
-        <td>{day.high.fahrenheit}&deg;</td>
+        <td className="tempHigh" ref={day.period}>{day.high.fahrenheit}&deg;</td>
         <td className="tempLow">{day.low.fahrenheit}&deg;</td>
       </tr>
       )
@@ -71,14 +75,22 @@ class WeatherMain extends React.Component{
 
         <div className="row header-bot">
           <img src={this.state.currentTempIcon} />
-          <h3>{this.state.currentTempDescr}</h3>
-          <h1>{this.state.currentTemp}&deg;</h1>
+          <span>{this.state.currentTempDescr}</span>
+          <div>
+            <span id="currentHigh">{this.state.currentHigh}&deg;</span>
+            <span id="currentLow">{this.state.currentLow}&deg;</span>
+          </div>
+          <h1 id="currentTemp">{this.state.currentTemp}&deg;</h1>
         </div>
 
-      <div className="row col-md-3">
-        <h3>Forecast</h3>
+      <div className="row col-md-3 forecastWrapper">
         <table id="forecastTable">
-          {this.renderForecast()}
+          <tbody>
+            <tr>
+              <th colSpan='4'>Forecast</th>
+            </tr>
+            {this.renderForecast()}
+          </tbody>
         </table>
       </div>
 
