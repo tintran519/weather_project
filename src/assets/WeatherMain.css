@@ -29,3 +29,14 @@ button {
 .header-bot {
   margin-top: 15%;
 }
+
+#forecastTable {
+  background-color: seagreen;
+  border: 1px solid white;
+  width: 100%;
+  text-align: left;
+}
+
+.tempLow {
+  color: skyblue;
+}

@@ -13,7 +13,7 @@ class WeatherMain extends React.Component{
       currentTemp:'',
       currentTempIcon:'',
       currentTempDescr: '',
-      forecast: ''
+      forecast: []
     }
   }
 
@@ -46,7 +46,12 @@ class WeatherMain extends React.Component{
 
   renderForecast() {
     return this.state.forecast.map((day,index) =>
-      <div key={index}>{day.date.weekday}</div>
+      <tr className="forecastRows" key={index}>
+        <td>{day.date.weekday}</td>
+        <td className="tempIcon"><img src={day.icon_url} /></td>
+        <td>{day.high.fahrenheit}&deg;</td>
+        <td className="tempLow">{day.low.fahrenheit}&deg;</td>
+      </tr>
       )
   };
 
@@ -70,14 +75,14 @@ class WeatherMain extends React.Component{
           <h1>{this.state.currentTemp}&deg;</h1>
         </div>
 
-      <div className="row col-sm-8 forecast">
-        <section>
-          <h3>Forecast</h3>
+      <div className="row col-md-3">
+        <h3>Forecast</h3>
+        <table id="forecastTable">
           {this.renderForecast()}
-        </section>
+        </table>
       </div>
 
-      <div className="row col-md-4">
+      <div className="row col-md-3">
         <section>
           <h3>Details</h3>
         </section>
