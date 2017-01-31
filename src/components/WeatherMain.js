@@ -1,5 +1,6 @@
-import React from 'react';
+import React,{components} from 'react';
 import '../assets/WeatherMain.css';
+import { Link } from 'react-router';
 
 class WeatherMain extends React.Component{
   constructor(props){
@@ -12,10 +13,14 @@ class WeatherMain extends React.Component{
       currentTemp:'',
       currentTempIcon:'',
       currentTempDescr: '',
+      forecast: [],
+      currentHigh: '',
+      currentLow: ''
     }
   }
 
-  componentWillMount() {
+  //load weather API
+  componentDidMount() {
     let _this = this;
     fetch(`/weather/${this.props.location.state.selectedLocation.zmw}`)
       .then((response) => {
@@ -33,27 +38,68 @@ class WeatherMain extends React.Component{
           date: results.current_observation.observation_time.slice(16),
           currentTemp: results.current_observation.temp_f,
           currentTempIcon: results.current_observation.icon_url,
-          currentTempDescr: results.current_observation.weather
+          currentTempDescr: results.current_observation.weather,
+          forecast: results.forecast.simpleforecast.forecastday,
+          currentHigh: results.forecast.simpleforecast.forecastday[0].high.fahrenheit,
+          currentLow: results.forecast.simpleforecast.forecastday[0].low.fahrenheit
         })
-        console.log(this.state);
+        console.log(this.state.forecast[0].high.fahrenheit);
         console.log(this.props.location.state.selectedLocation.zmw)
         })
   }
+
+  renderForecast() {
+    return this.state.forecast.map((day,index) =>
+      <tr className="forecastRows" key={index}>
+        <td>{day.date.weekday}</td>
+        <td className="tempIcon"><img src={day.icon_url} /></td>
+        <td className="tempHigh" ref={day.period}>{day.high.fahrenheit}&deg;</td>
+        <td className="tempLow">{day.low.fahrenheit}&deg;</td>
+      </tr>
+      )
+  };
 
   render() {
     return(
       <div className="mainWrapper">
         <div className="row header-top">
-          <h1>{this.state.name}</h1>
+          <h1 id="locationName">{this.state.name}</h1>
+          <div id="locationChange">
+            <button>
+              <Link to="/" className="locationPicker">Change location</Link>
+            </button>
+        </div>
           <h3>{this.state.country}</h3>
           <h4>{this.state.date}</h4>
         </div>
 
         <div className="row header-bot">
           <img src={this.state.currentTempIcon} />
-          <h3>{this.state.currentTempDescr}</h3>
-          <h1>{this.state.currentTemp}</h1>
+          <span>{this.state.currentTempDescr}</span>
+          <div>
+            <span id="currentHigh">{this.state.currentHigh}&deg;</span>
+            <span id="currentLow">{this.state.currentLow}&deg;</span>
+          </div>
+          <h1 id="currentTemp">{this.state.currentTemp}&deg;</h1>
         </div>
+
+      <div className="row col-md-3 forecastWrapper">
+        <table id="forecastTable">
+          <tbody>
+            <tr>
+              <th colSpan='4'>Forecast</th>
+            </tr>
+            {this.renderForecast()}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="row col-md-3">
+        <section>
+          <h3>Details</h3>
+        </section>
+      </div>
+
       </div>
       )
   }

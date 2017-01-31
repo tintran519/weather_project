@@ -3,10 +3,61 @@
   color: white;
 }
 
+#locationName {
+  display: inline-block;
+  margin-right: 2%;
+  margin-bottom: 0px;
+}
+
+#locationChange {
+  display: inline-block;
+  padding: 6px;
+}
+
+button {
+  background-color: rgba(117, 108, 108, 0.61);
+}
+
+.locationPicker {
+  color: gold;
+}
+
 .header-bot,.header-top {
   text-align: left;
 }
 
+#currentTemp {
+  font-size: 50pt;
+}
+
+#currentHigh {
+  margin-right: 2%;
+}
+
+#currentHigh,#currentLow {
+  font-size: 19pt;
+}
+
 .header-bot {
   margin-top: 15%;
+}
+
+.forecastWrapper {
+  background-color: seagreen;
+}
+
+th {
+  font-size: 14pt;
+  font-weight: normal;
+  padding-bottom: 8px;
+  border-bottom: 1px solid white;
+}
+
+#forecastTable {
+  width: 100%;
+  text-align: left;
+}
+
+.tempLow {
+  color: skyblue;
 }
