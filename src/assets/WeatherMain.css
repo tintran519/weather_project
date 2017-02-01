@@ -26,8 +26,17 @@ button {
   text-align: left;
 }
 
+#country {
+  margin-top: 3px;
+}
+
+#tempDescr {
+  font-size: 16pt;
+}
+
 #currentTemp {
-  font-size: 50pt;
+  font-size: 56pt;
+  margin-top: 0px;
 }
 
 #currentHigh {
@@ -42,8 +51,9 @@ button {
   margin-top: 15%;
 }
 
-.forecastWrapper {
+.forecastWrapper, .detailsWrapper {
   background-color: seagreen;
+  margin-right: 2%;
 }
 
 th {
@@ -53,9 +63,44 @@ th {
   border-bottom: 1px solid white;
 }
 
+/*Forecast Table*/
 #forecastTable {
   width: 100%;
   text-align: left;
+  font-size: 13pt;
+}
+
+/*Detail Table*/
+#detailsTable {
+  width: 100%;
+  text-align: left;
+  font-size: 13pt;
+}
+
+#detailIcon {
+  padding-right: 35px;
+}
+
+#detailIcon img {
+  width: 70px;
+  height: 70px;
+}
+
+.detailLabel {
+  padding-top: 2px;
+  padding-bottom: 8px;
+  padding-right: 30px;
+  text-align: left;
+}
+
+.detailValue {
+  padding-top: 2px;
+  padding-bottom: 5px;
+  text-align: right;
+}
+
+.detailTextForecast {
+  padding-bottom: 10px;
 }
 
 .tempLow {
