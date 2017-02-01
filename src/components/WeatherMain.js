@@ -79,7 +79,7 @@ class WeatherMain extends React.Component{
 
         <div className="row header-bot">
           <img src={this.state.currentTempIcon} />
-          <span>{this.state.currentTempDescr}</span>
+          <span id="tempDescr">{this.state.currentTempDescr}</span>
           <div>
             <span id="currentHigh">&uarr;&nbsp;{this.state.currentHigh}&deg;</span>
             <span id="currentLow">&darr;&nbsp;{this.state.currentLow}&deg;</span>
@@ -124,6 +124,12 @@ class WeatherMain extends React.Component{
               <tr>
                 <td className="detailLabel">UV Index</td>
                 <td className="detailValue">{this.state.uv}</td>
+              </tr>
+              <tr>
+                <td colSpan='3' className="detailTextForecast">Tonight Weather Description Here skdfjskjflsjfsdfk</td>
+              </tr>
+              <tr>
+                <td colSpan='3' className="detailTextForecast">Today Weather Description here alsfjlskdjflksdjflkjs</td>
               </tr>
             </tbody>
           </table>

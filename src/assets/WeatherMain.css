@@ -30,8 +30,13 @@ button {
   margin-top: 3px;
 }
 
+#tempDescr {
+  font-size: 16pt;
+}
+
 #currentTemp {
-  font-size: 50pt;
+  font-size: 56pt;
+  margin-top: 0px;
 }
 
 #currentHigh {
@@ -48,6 +53,7 @@ button {
 
 .forecastWrapper, .detailsWrapper {
   background-color: seagreen;
+  margin-right: 2%;
 }
 
 th {
@@ -82,7 +88,7 @@ th {
 
 .detailLabel {
   padding-top: 2px;
-  padding-bottom: 5px;
+  padding-bottom: 8px;
   padding-right: 30px;
   text-align: left;
 }
@@ -91,6 +97,10 @@ th {
   padding-top: 2px;
   padding-bottom: 5px;
   text-align: right;
+}
+
+.detailTextForecast {
+  padding-bottom: 10px;
 }
 
 .tempLow {
