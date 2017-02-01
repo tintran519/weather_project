@@ -41,7 +41,11 @@ class WeatherMain extends React.Component{
           currentTempDescr: results.current_observation.weather,
           forecast: results.forecast.simpleforecast.forecastday,
           currentHigh: results.forecast.simpleforecast.forecastday[0].high.fahrenheit,
-          currentLow: results.forecast.simpleforecast.forecastday[0].low.fahrenheit
+          currentLow: results.forecast.simpleforecast.forecastday[0].low.fahrenheit,
+          feelsLike: results.current_observation.feelslike_f,
+          humidity: results.current_observation.relative_humidity,
+          visibility: results.current_observation.visibility_mi,
+          uv: results.current_observation.UV
         })
         console.log(this.state.forecast[0].high.fahrenheit);
         console.log(this.props.location.state.selectedLocation.zmw)
@@ -69,7 +73,7 @@ class WeatherMain extends React.Component{
               <Link to="/" className="locationPicker">Change location</Link>
             </button>
         </div>
-          <h3>{this.state.country}</h3>
+          <h3 id="country">{this.state.country}</h3>
           <h4>{this.state.date}</h4>
         </div>
 
@@ -77,27 +81,54 @@ class WeatherMain extends React.Component{
           <img src={this.state.currentTempIcon} />
           <span>{this.state.currentTempDescr}</span>
           <div>
-            <span id="currentHigh">{this.state.currentHigh}&deg;</span>
-            <span id="currentLow">{this.state.currentLow}&deg;</span>
+            <span id="currentHigh">&uarr;&nbsp;{this.state.currentHigh}&deg;</span>
+            <span id="currentLow">&darr;&nbsp;{this.state.currentLow}&deg;</span>
           </div>
           <h1 id="currentTemp">{this.state.currentTemp}&deg;</h1>
         </div>
 
-      <div className="row col-md-3 forecastWrapper">
-        <table id="forecastTable">
-          <tbody>
-            <tr>
-              <th colSpan='4'>Forecast</th>
-            </tr>
-            {this.renderForecast()}
-          </tbody>
-        </table>
-      </div>
+      <div className="row">
 
-      <div className="row col-md-3">
-        <section>
-          <h3>Details</h3>
-        </section>
+        <div className="col-md-3 forecastWrapper">
+          <table id="forecastTable">
+            <tbody>
+              <tr>
+                <th colSpan='4'>Forecast</th>
+              </tr>
+              {this.renderForecast()}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="col-md-3 detailsWrapper">
+          <table id="detailsTable">
+            <tbody>
+              <tr>
+                <th colSpan='3'>Details</th>
+              </tr>
+              <tr>
+                <td rowSpan='4' id="detailIcon">
+                  <img src={this.state.currentTempIcon} />
+                </td>
+                <td className="detailLabel">Feels like</td>
+                <td className="detailValue">{this.state.feelsLike}&deg;</td>
+              </tr>
+              <tr>
+                <td className="detailLabel">Humidity</td>
+                <td className="detailValue">{this.state.visibility}</td>
+              </tr>
+              <tr>
+                <td className="detailLabel">Visibility</td>
+                <td className="detailValue">{this.state.visibility}miles</td>
+              </tr>
+              <tr>
+                <td className="detailLabel">UV Index</td>
+                <td className="detailValue">{this.state.uv}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
       </div>
 
       </div>
