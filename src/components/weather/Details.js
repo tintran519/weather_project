@@ -10,8 +10,9 @@ class Details extends React.Component {
       feelsLike: this.props.currentObservationInfo.feelslike_f,
       humidity: this.props.currentObservationInfo.relative_humidity,
       visibility: this.props.currentObservationInfo.visibility_mi,
-      uv: this.props.currentObservationInfo.UV
-
+      uv: this.props.currentObservationInfo.UV,
+      detailCurrentDay: this.props.currentDayDetail.fcttext,
+      detailCurrentNight: this.props.currentNightDetail.fcttext
     }
   }
 
@@ -43,10 +44,10 @@ class Details extends React.Component {
                 <td className="detailValue">{this.state.uv}</td>
               </tr>
               <tr>
-                <td colSpan='3' className="detailTextForecast">Tonight Weather Description Here skdfjskjflsjfsdfk</td>
+                <td colSpan='3' className="detailTextForecast">Tonight - {this.state.detailCurrentNight}</td>
               </tr>
               <tr>
-                <td colSpan='3' className="detailTextForecast">Today Weather Description here alsfjlskdjflksdjflkjs</td>
+                <td colSpan='3' className="detailTextForecast">Today - {this.state.detailCurrentDay}</td>
               </tr>
             </tbody>
           </table>

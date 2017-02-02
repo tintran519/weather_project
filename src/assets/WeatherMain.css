@@ -90,8 +90,9 @@ th {
 }
 
 #detailIcon img {
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
+  margin-left: 20%;
 }
 
 .detailLabel {
