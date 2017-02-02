@@ -51,8 +51,14 @@ button {
   margin-top: 15%;
 }
 
-.forecastWrapper, .detailsWrapper {
+.forecastWrapper,.detailsWrapper {
   background-color: seagreen;
+  margin-right: 2%;
+  margin-top: 1%;
+  width: 40%;
+}
+
+.forecastWrapper {
   margin-right: 2%;
 }
 
@@ -68,6 +74,7 @@ th {
   width: 100%;
   text-align: left;
   font-size: 13pt;
+  background-color: seagreen;
 }
 
 /*Detail Table*/
@@ -75,6 +82,7 @@ th {
   width: 100%;
   text-align: left;
   font-size: 13pt;
+  background-color: seagreen;
 }
 
 #detailIcon {
