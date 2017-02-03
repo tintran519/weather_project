@@ -1,5 +1,6 @@
 import React,{components} from 'react';
 import '../../assets/WeatherMain.css';
+import classnames from 'classnames';
 
 
 class Forecast extends React.Component {
@@ -8,21 +9,40 @@ class Forecast extends React.Component {
 
     this.state = {
       forecast: this.props.forecastInfo,
-      textForecast: this.props.forecastInfo.txt_forecast.forecastday
+      textForecast: this.props.forecastInfo.txt_forecast.forecastday,
+      tenDayForecast: true
     }
   }
 
   renderForecast() {
-    console.log(this.state.textForecast[0])
-    return this.state.forecast.simpleforecast.forecastday.map((day,index) =>
-      <tr className="forecastRows" key={index}>
-        <td>{day.date.weekday}</td>
-        <td className="tempIcon"><img src={day.icon_url} /></td>
-        <td className="tempHigh" ref={day.period}>{day.high.fahrenheit}&deg;</td>
-        <td className="tempLow">{day.low.fahrenheit}&deg;</td>
-      </tr>
-      )
+    if(this.state.tenDayForecast) {
+      return this.state.forecast.simpleforecast.forecastday.map((day,index) =>
+        <tr className="forecastRows" key={index}>
+          <td>{day.date.weekday}</td>
+          <td className="tempIcon"><img src={day.icon_url} /></td>
+          <td className="tempHigh" ref={day.period}>{day.high.fahrenheit}&deg;</td>
+          <td className="tempLow">{day.low.fahrenheit}&deg;</td>
+        </tr>
+        )
+    } else {
+      return this.state.forecast.simpleforecast.forecastday.slice(0,5).map((day,index) =>
+        <tr className="forecastRows" key={index}>
+          <td>{day.date.weekday}</td>
+          <td className="tempIcon"><img src={day.icon_url} /></td>
+          <td className="tempHigh" ref={day.period}>{day.high.fahrenheit}&deg;</td>
+          <td className="tempLow">{day.low.fahrenheit}&deg;</td>
+        </tr>
+        )
+    }
   };
+
+  onFiveDayClick() {
+    this.setState({ tenDayForecast: false });
+  }
+
+  onTenDayClick() {
+    this.setState({ tenDayForecast: true });
+  }
 
   render() {
     return (
@@ -35,7 +55,8 @@ class Forecast extends React.Component {
           {this.renderForecast()}
           <tr colSpan='2'>
             <td>
-              <span>5 DAY</span>&nbsp;|&nbsp;<span>10 DAY</span>
+              <span className={classnames("forecastToggle", {"forecastToggleOff": this.state.tenDayForecast})} onClick={this.onFiveDayClick.bind(this)}>5 DAY</span>&nbsp;|&nbsp;
+              <span className={classnames("forecastToggle", {"forecastToggleOff": !this.state.tenDayForecast})} onClick={this.onTenDayClick.bind(this)}>10 DAY</span>
             </td>
           </tr>
         </tbody>
