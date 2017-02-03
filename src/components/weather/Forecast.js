@@ -1,6 +1,8 @@
 import React,{components} from 'react';
 import '../../assets/WeatherMain.css';
 import classnames from 'classnames';
+import '../../../bower_components/weather-icons/css/weather-icons.css';
+import '../../../bower_components/weather-icons/css/weather-icons-wind.css';
 
 
 class Forecast extends React.Component {
@@ -20,6 +22,7 @@ class Forecast extends React.Component {
         <tr className="forecastRows" key={index}>
           <td>{day.date.weekday}</td>
           <td className="tempIcon"><img src={day.icon_url} /></td>
+          <td><i style={{display: 'block'}} className="wi wi-raindrop"></i><span>{day.pop}%</span></td>
           <td className="tempHigh" ref={day.period}>{day.high.fahrenheit}&deg;</td>
           <td className="tempLow">{day.low.fahrenheit}&deg;</td>
         </tr>
@@ -29,6 +32,7 @@ class Forecast extends React.Component {
         <tr className="forecastRows" key={index}>
           <td>{day.date.weekday}</td>
           <td className="tempIcon"><img src={day.icon_url} /></td>
+          <td><i style={{display: 'block'}} className="wi wi-raindrop"></i><span>{day.pop}%</span></td>
           <td className="tempHigh" ref={day.period}>{day.high.fahrenheit}&deg;</td>
           <td className="tempLow">{day.low.fahrenheit}&deg;</td>
         </tr>
@@ -50,7 +54,7 @@ class Forecast extends React.Component {
       <table id="forecastTable">
         <tbody>
           <tr>
-            <th colSpan='4'>Forecast</th>
+            <th colSpan='5'>Forecast</th>
           </tr>
           {this.renderForecast()}
           <tr colSpan='2'>

@@ -75,6 +75,13 @@ th {
 td {
   padding-bottom: 4px;
   padding-top: 15px;
+  width: 1%;
+}
+
+i {
+  display: block;
+  margin-left: 10%;
+  color: skyblue;
 }
 
 /*=============================*/
