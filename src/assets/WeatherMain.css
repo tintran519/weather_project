@@ -51,11 +51,13 @@ button {
   margin-top: 15%;
 }
 
+/*Forecast Section*/
 .forecastWrapper,.detailsWrapper {
-  background-color: seagreen;
+  background-color: #115da0;
   margin-right: 2%;
   margin-top: 1%;
   width: 40%;
+  border: 1px solid gold;
 }
 
 .forecastWrapper {
@@ -66,23 +68,53 @@ th {
   font-size: 14pt;
   font-weight: normal;
   padding-bottom: 8px;
+  padding-top: 2%;
   border-bottom: 1px solid white;
 }
 
+td {
+  padding-bottom: 4px;
+  padding-top: 15px;
+  width: 1%;
+}
+
+i {
+  display: block;
+  margin-left: 10%;
+  color: skyblue;
+}
+
+/*=============================*/
 /*Forecast Table*/
+
 #forecastTable {
   width: 100%;
   text-align: left;
   font-size: 13pt;
-  background-color: seagreen;
+  background-color: #115da0;
 }
+
+.forecastRows {
+  border-bottom: 1px dotted white;
+  margin-bottom: 1%;
+}
+
+.forecastToggle {
+  cursor: pointer;
+}
+
+.forecastToggleOff {
+  color: grey;
+}
+
+/*=============================*/
 
 /*Detail Table*/
 #detailsTable {
   width: 100%;
   text-align: left;
   font-size: 13pt;
-  background-color: seagreen;
+  background-color: #115da0;
 }
 
 #detailIcon {

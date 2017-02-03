@@ -22,4 +22,5 @@ li {
 
 li:hover {
   cursor: pointer;
+  color: teal;
 }
