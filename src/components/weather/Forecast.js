@@ -7,13 +7,14 @@ class Forecast extends React.Component {
     super(props);
 
     this.state = {
-      forecast: this.props.forecastInfo
+      forecast: this.props.forecastInfo,
+      textForecast: this.props.forecastInfo.txt_forecast.forecastday
     }
   }
 
   renderForecast() {
-    console.log(this.props)
-    return this.state.forecast.map((day,index) =>
+    console.log(this.state.textForecast[0])
+    return this.state.forecast.simpleforecast.forecastday.map((day,index) =>
       <tr className="forecastRows" key={index}>
         <td>{day.date.weekday}</td>
         <td className="tempIcon"><img src={day.icon_url} /></td>
@@ -32,6 +33,11 @@ class Forecast extends React.Component {
             <th colSpan='4'>Forecast</th>
           </tr>
           {this.renderForecast()}
+          <tr colSpan='2'>
+            <td>
+              <span>5 DAY</span>&nbsp;|&nbsp;<span>10 DAY</span>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>

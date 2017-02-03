@@ -20,7 +20,7 @@ class WeatherMain extends React.Component{
       currentLow: '',
       currentObservation: [],
       detailForecastCurrentDay: [],
-      detailForecastCurrentNight: []
+      detailForecastCurrentNight: [],
     }
   }
 
@@ -44,7 +44,7 @@ class WeatherMain extends React.Component{
           currentTemp: results.current_observation.temp_f,
           currentTempIcon: results.current_observation.icon_url,
           currentTempDescr: results.current_observation.weather,
-          forecast: results.forecast.simpleforecast.forecastday,
+          forecast: results.forecast,
           currentHigh: results.forecast.simpleforecast.forecastday[0].high.fahrenheit,
           currentLow: results.forecast.simpleforecast.forecastday[0].low.fahrenheit,
           currentObservation: results.current_observation,
