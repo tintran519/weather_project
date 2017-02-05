@@ -37,6 +37,7 @@ button {
 #currentTemp {
   font-size: 56pt;
   margin-top: 0px;
+  display: inline-block;
 }
 
 #currentHigh {
@@ -51,6 +52,13 @@ button {
   margin-top: 15%;
 }
 
+#metricControl {
+  display: inline-block;
+  margin-left: 1%;
+  font-size: large;
+}
+
+/*==================================*/
 /*Forecast Section*/
 .forecastWrapper,.detailsWrapper {
   background-color: #115da0;
@@ -99,11 +107,11 @@ i {
   margin-bottom: 1%;
 }
 
-.forecastToggle {
+.forecastToggle, .metricToggle {
   cursor: pointer;
 }
 
-.forecastToggleOff {
+.forecastToggleOff, .metricToggleOff {
   color: grey;
 }
 

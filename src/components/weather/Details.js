@@ -37,7 +37,7 @@ class Details extends React.Component {
               </tr>
               <tr>
                 <td className="detailLabel">Visibility</td>
-                <td className="detailValue">{this.state.visibility}miles</td>
+                <td className="detailValue">{this.state.visibility}&nbsp;miles</td>
               </tr>
               <tr>
                 <td className="detailLabel">UV Index</td>

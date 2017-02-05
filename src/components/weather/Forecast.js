@@ -10,10 +10,15 @@ class Forecast extends React.Component {
     super(props);
 
     this.state = {
+      celsius: this.props.celsiusToggle,
       forecast: this.props.forecastInfo,
       textForecast: this.props.forecastInfo.txt_forecast.forecastday,
       tenDayForecast: true
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ celsius: nextProps.celsiusToggle })
   }
 
   renderForecast() {
@@ -22,9 +27,9 @@ class Forecast extends React.Component {
         <tr className="forecastRows" key={index}>
           <td>{day.date.weekday}</td>
           <td className="tempIcon"><img src={day.icon_url} /></td>
-          <td><i style={{display: 'block'}} className="wi wi-raindrop"></i><span>{day.pop}%</span></td>
-          <td className="tempHigh" ref={day.period}>{day.high.fahrenheit}&deg;</td>
-          <td className="tempLow">{day.low.fahrenheit}&deg;</td>
+          <td><i style={{display: 'block'}} className="wi wi-humidity"></i><span>{day.pop}%</span></td>
+          <td className="tempHigh" ref={day.period}>{!this.state.celsius ? day.high.fahrenheit : day.high.celsius}&deg;</td>
+          <td className="tempLow">{!this.state.celsius ? day.low.fahrenheit : day.low.celsius}&deg;</td>
         </tr>
         )
     } else {
@@ -32,9 +37,9 @@ class Forecast extends React.Component {
         <tr className="forecastRows" key={index}>
           <td>{day.date.weekday}</td>
           <td className="tempIcon"><img src={day.icon_url} /></td>
-          <td><i style={{display: 'block'}} className="wi wi-raindrop"></i><span>{day.pop}%</span></td>
-          <td className="tempHigh" ref={day.period}>{day.high.fahrenheit}&deg;</td>
-          <td className="tempLow">{day.low.fahrenheit}&deg;</td>
+          <td><i style={{display: 'block'}} className="wi wi-humidity"></i><span>{day.pop}%</span></td>
+          <td className="tempHigh" ref={day.period}>{!this.state.celsius ? day.high.fahrenheit : day.high.celsius}&deg;</td>
+          <td className="tempLow">{!this.state.celsius ? day.low.fahrenheit : day.low.celsius}&deg;</td>
         </tr>
         )
     }
