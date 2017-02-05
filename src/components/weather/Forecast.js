@@ -12,7 +12,8 @@ class Forecast extends React.Component {
     this.state = {
       celsius: this.props.celsiusToggle,
       forecast: this.props.forecastInfo,
-      textForecast: this.props.forecastInfo.txt_forecast.forecastday,
+      textForecastObj: this.props.forecastInfo.txt_forecast.forecastday,
+      textForecast: [],
       tenDayForecast: true
     }
   }
@@ -21,15 +22,31 @@ class Forecast extends React.Component {
     this.setState({ celsius: nextProps.celsiusToggle })
   }
 
+  componentWillMount() {
+    //remove night details for each day from json array
+    let textForecast = [];
+    this.state.textForecastObj.forEach((day,index) => {
+      if(index % 2 === 0) textForecast.push(day)})
+    console.log(textForecast);
+
+    //create new array with detailed info & save to state
+    let forecastObj = this.state.forecast;
+    let {simpleforecast:{forecastday}} = forecastObj
+    forecastday.forEach((day,index) => {day.textForecast = textForecast[index]})
+    this.setState({ textForecast: forecastday })
+  }
+
   renderForecast() {
+    console.log(this.state.textForecast)
     if(this.state.tenDayForecast) {
-      return this.state.forecast.simpleforecast.forecastday.map((day,index) =>
+      return this.state.textForecast.map((day,index) =>
         <tr className="forecastRows" key={index}>
           <td>{day.date.weekday}</td>
           <td className="tempIcon"><img src={day.icon_url} /></td>
           <td><i style={{display: 'block'}} className="wi wi-humidity"></i><span>{day.pop}%</span></td>
           <td className="tempHigh" ref={day.period}>{!this.state.celsius ? day.high.fahrenheit : day.high.celsius}&deg;</td>
           <td className="tempLow">{!this.state.celsius ? day.low.fahrenheit : day.low.celsius}&deg;</td>
+          <td colSpan='5' className='blah'>{day.textForecast.fcttext}</td>
         </tr>
         )
     } else {
