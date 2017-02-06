@@ -102,9 +102,10 @@ i {
   background-color: #115da0;
 }
 
-.forecastRows {
+.forecastRows, .textForecastRow {
   border-bottom: 1px dotted white;
   margin-bottom: 1%;
+  cursor: pointer;
 }
 
 .forecastToggle, .metricToggle {
