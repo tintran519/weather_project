@@ -41,7 +41,7 @@ class Forecast extends React.Component {
     if(this.state.tenDayForecast) {
       return this.state.textForecast.map((day,index) =>
         <tbody key={index}>
-          <tr className="forecastRows" ref={"forecastRow " + index} onClick={this.textForecastToggle.bind(this,index)}>
+          <tr className="forecastRows" style={{borderBottom: '1px dotted white'}} ref={"forecastRow " + index} onClick={this.textForecastToggle.bind(this,index)}>
             <td>{day.date.weekday}</td>
             <td className="tempIcon"><img src={day.icon_url} /></td>
             <td><i style={{display: 'block'}} className="wi wi-humidity"></i><span>{day.pop}%</span></td>
@@ -56,7 +56,7 @@ class Forecast extends React.Component {
     } else {
       return this.state.forecast.simpleforecast.forecastday.slice(0,5).map((day,index) =>
         <tbody key={index}>
-          <tr className="forecastRows" ref={"forecastRow " + index} onClick={this.textForecastToggle.bind(this,index)}>
+          <tr className="forecastRows" style={{borderBottom: '1px dotted white'}} ref={"forecastRow " + index} onClick={this.textForecastToggle.bind(this,index)}>
             <td>{day.date.weekday}</td>
             <td className="tempIcon"><img src={day.icon_url} /></td>
             <td><i style={{display: 'block'}} className="wi wi-humidity"></i><span>{day.pop}%</span></td>
@@ -73,12 +73,10 @@ class Forecast extends React.Component {
 
   textForecastToggle(index) {
     if(this.refs["textForecast " + index].style.display === 'none') {
-      console.log(this.refs["forecastRow " + index].style.borderBottom)
-
-      this.refs["forecastRow " + index].style.borderBottom === '2px solid red'
+      this.refs["forecastRow " + index].style.borderBottom = 'none'
       this.refs["textForecast " + index].style.display = 'table-row'
     } else {
-      // this.refs["forecastRow " + index].style.borderBottom === '1px dotted white'
+      this.refs["forecastRow " + index].style.borderBottom = '1px dotted white'
       this.refs["textForecast " + index].style.display = 'none'
     }
   }
