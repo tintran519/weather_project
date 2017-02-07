@@ -24,6 +24,7 @@ button {
 
 .header-bot,.header-top {
   text-align: left;
+  margin-left: 0%;
 }
 
 #country {
@@ -64,13 +65,10 @@ button {
   background-color: #115da0;
   margin-right: 2%;
   margin-top: 1%;
-  width: 40%;
+  width: 98%;
   border: 1px solid gold;
 }
 
-.forecastWrapper {
-  margin-right: 2%;
-}
 
 th {
   font-size: 14pt;
@@ -95,11 +93,12 @@ i {
 /*=============================*/
 /*Forecast Table*/
 
-#forecastTable {
-  width: 100%;
+#forecastTable, #detailsTable {
+  width: 96%;
   text-align: left;
   font-size: 13pt;
   background-color: #115da0;
+  margin-left: 2%;
 }
 
 .forecastRows {
@@ -120,15 +119,7 @@ i {
 }
 
 /*=============================*/
-
 /*Detail Table*/
-#detailsTable {
-  width: 100%;
-  text-align: left;
-  font-size: 13pt;
-  background-color: #115da0;
-}
-
 #detailIcon {
   padding-right: 35px;
 }
