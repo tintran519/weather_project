@@ -91,7 +91,7 @@ class Forecast extends React.Component {
 
   render() {
     return (
-    <div className="col-md-3 forecastWrapper">
+    <div className="forecastWrapper">
       <table id="forecastTable">
         <tbody>
           <tr>

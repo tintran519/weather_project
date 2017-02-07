@@ -3,6 +3,7 @@ import '../assets/WeatherMain.css';
 import { Link } from 'react-router';
 import Forecast from './weather/Forecast';
 import Details from './weather/Details';
+import SunMoonPhase from './weather/SunMoonPhase';
 import classnames from 'classnames';
 
 class WeatherMain extends React.Component{
@@ -99,8 +100,17 @@ class WeatherMain extends React.Component{
         </div>
 
         <div className="row">
-          {this.state.forecast.length === 0 ? <div>Loading...</div> : <Forecast forecastInfo={this.state.forecast} celsiusToggle={this.state.celsius} />}
-          {this.state.currentObservation.length === 0 ? <div>Loading...</div> : <Details currentObservationInfo={this.state.currentObservation} currentDayDetail={this.state.detailForecastCurrentDay} currentNightDetail={this.state.detailForecastCurrentNight} />}
+          <div className="col-md-6">
+            {this.state.forecast.length === 0 ? <div>Loading...</div> : <Forecast forecastInfo={this.state.forecast} celsiusToggle={this.state.celsius} />}
+          </div>
+          <div className="col-md-6">
+            <div className="detailsWrapper">
+              {this.state.currentObservation.length === 0 ? <div>Loading...</div> : <Details currentObservationInfo={this.state.currentObservation} currentDayDetail={this.state.detailForecastCurrentDay} currentNightDetail={this.state.detailForecastCurrentNight} />}
+            </div>
+            <div className="col-md-12">
+              <SunMoonPhase />
+            </div>
+          </div>
         </div>
 
       </div>

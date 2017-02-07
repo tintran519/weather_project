@@ -18,7 +18,6 @@ class Details extends React.Component {
 
     render() {
       return (
-        <div className="col-md-3 detailsWrapper">
           <table id="detailsTable">
             <tbody>
               <tr>
@@ -51,7 +50,6 @@ class Details extends React.Component {
               </tr>
             </tbody>
           </table>
-        </div>
         );
     }
   }
