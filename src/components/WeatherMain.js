@@ -26,6 +26,7 @@ class WeatherMain extends React.Component{
       currentObservation: [],
       detailForecastCurrentDay: [],
       detailForecastCurrentNight: [],
+      phases: []
     }
   }
 
@@ -59,6 +60,7 @@ class WeatherMain extends React.Component{
           currentObservation: results.current_observation,
           detailForecastCurrentDay: results.forecast.txt_forecast.forecastday[0],
           detailForecastCurrentNight: results.forecast.txt_forecast.forecastday[1],
+          phases: results.moon_phase
         })
       })
     }
@@ -92,7 +94,7 @@ class WeatherMain extends React.Component{
             <span id="currentHigh">&uarr;&nbsp;{!this.state.celsius ? this.state.currentHighF : this.state.currentHighC}&deg;</span>
             <span id="currentLow">&darr;&nbsp;{!this.state.celsius ? this.state.currentLowF : this.state.currentLowC}&deg;</span>
           </div>
-          <h1 id="currentTemp">{!this.state.celsius ? this.state.currentTempF : this.state.currentTempC}&deg;</h1>
+          <h1 id="currentTemp">{!this.state.celsius ? Math.ceil(this.state.currentTempF) : Math.ceil(this.state.currentTempC)}&deg;</h1>
           <div id="metricControl">
             <div className={classnames("metricToggle", {"metricToggleOff": !this.state.celsius})} onClick={this.onCelsiusClick.bind(this)}>C</div>
             <div className={classnames("metricToggle", {"metricToggleOff": this.state.celsius})} onClick={this.onFahrenheitClick.bind(this)}>F</div>
@@ -107,8 +109,8 @@ class WeatherMain extends React.Component{
             <div className="detailsWrapper">
               {this.state.currentObservation.length === 0 ? <div>Loading...</div> : <Details currentObservationInfo={this.state.currentObservation} currentDayDetail={this.state.detailForecastCurrentDay} currentNightDetail={this.state.detailForecastCurrentNight} />}
             </div>
-            <div className="col-md-12">
-              <SunMoonPhase />
+            <div className="col-md-12" style={{padding:0}}>
+              {this.state.phases.length === 0 ? <div>Loading...</div> : <SunMoonPhase phasesInfo={this.state.phases}/>}
             </div>
           </div>
         </div>

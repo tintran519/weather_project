@@ -36,7 +36,7 @@ button {
 }
 
 #currentTemp {
-  font-size: 56pt;
+  font-size: 65pt;
   margin-top: 0px;
   display: inline-block;
 }
@@ -53,6 +53,10 @@ button {
   margin-top: 15%;
 }
 
+.header-bot img {
+  margin-right: 8px;
+}
+
 #metricControl {
   display: inline-block;
   margin-left: 1%;
@@ -61,14 +65,13 @@ button {
 
 /*==================================*/
 /*Forecast Section*/
-.forecastWrapper,.detailsWrapper {
+.forecastWrapper,.detailsWrapper,#phaseWrapper {
   background-color: #115da0;
   margin-right: 2%;
-  margin-top: 1%;
+  margin-top: 2%;
   width: 98%;
   border: 1px solid gold;
 }
-
 
 th {
   font-size: 14pt;
@@ -149,4 +152,17 @@ i {
 
 .tempLow {
   color: skyblue;
+}
+
+/*====================*/
+/*Phases*/
+
+#phaseTable {
+  margin-left: 2%;
+  width: 96%;
+}
+
+.phaseIcon {
+  margin-left: 0%;
+  font-size: 35pt;
 }
