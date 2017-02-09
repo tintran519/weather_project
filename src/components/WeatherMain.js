@@ -26,7 +26,8 @@ class WeatherMain extends React.Component{
       currentObservation: [],
       detailForecastCurrentDay: [],
       detailForecastCurrentNight: [],
-      phases: []
+      phases: [],
+      currentTime: ''
     }
   }
 
@@ -60,7 +61,8 @@ class WeatherMain extends React.Component{
           currentObservation: results.current_observation,
           detailForecastCurrentDay: results.forecast.txt_forecast.forecastday[0],
           detailForecastCurrentNight: results.forecast.txt_forecast.forecastday[1],
-          phases: results.moon_phase
+          phases: results.moon_phase,
+          currentTime: results.moon_phase.current_time
         })
       })
     }
@@ -74,49 +76,51 @@ class WeatherMain extends React.Component{
   }
 
   render() {
-    return(
-      <div className="mainWrapper">
-        <div className="row header-top">
-          <h1 id="locationName">{this.state.name}</h1>
-          <div id="locationChange">
-            <button>
-              <Link to="/" className="locationPicker">Change location</Link>
-            </button>
-        </div>
-          <h3 id="country">{this.state.country}</h3>
-          <h4>{this.state.date}</h4>
-        </div>
+    if (this.state.phases.length === 0){
+      return(<div>Loading...</div>)
+    }else {
+      return(
+        <div className={classnames("mainWrapperDay", {"mainWrapperNight": this.state.currentTime.hour >= this.state.phases.sunset.hour})}>
+          <div className="row header-top">
+            <h1 id="locationName">{this.state.name}</h1>
+            <div id="locationChange">
+              <button>
+                <Link to="/" className="locationPicker">Change location</Link>
+              </button>
+          </div>
+            <h3 id="country">{this.state.country}</h3>
+            <h4>{this.state.date}</h4>
+          </div>
 
-        <div className="row header-bot">
-          <img src={this.state.currentTempIcon} />
-          <span id="tempDescr">{this.state.currentTempDescr}</span>
-          <div>
-            <span id="currentHigh">&uarr;&nbsp;{!this.state.celsius ? this.state.currentHighF : this.state.currentHighC}&deg;</span>
-            <span id="currentLow">&darr;&nbsp;{!this.state.celsius ? this.state.currentLowF : this.state.currentLowC}&deg;</span>
+          <div className="row header-bot">
+            <img src={this.state.currentTempIcon} />
+            <span id="tempDescr">{this.state.currentTempDescr}</span>
+            <div>
+              <span id="currentHigh">&uarr;&nbsp;{!this.state.celsius ? this.state.currentHighF : this.state.currentHighC}&deg;</span>
+              <span id="currentLow">&darr;&nbsp;{!this.state.celsius ? this.state.currentLowF : this.state.currentLowC}&deg;</span>
+            </div>
+            <h1 id="currentTemp">{!this.state.celsius ? Math.ceil(this.state.currentTempF) : Math.ceil(this.state.currentTempC)}&deg;</h1>
+            <div id="metricControl">
+              <div className={classnames("metricToggle", {"metricToggleOff": !this.state.celsius})} onClick={this.onCelsiusClick.bind(this)}>C</div>
+              <div className={classnames("metricToggle", {"metricToggleOff": this.state.celsius})} onClick={this.onFahrenheitClick.bind(this)}>F</div>
+            </div>
           </div>
-          <h1 id="currentTemp">{!this.state.celsius ? Math.ceil(this.state.currentTempF) : Math.ceil(this.state.currentTempC)}&deg;</h1>
-          <div id="metricControl">
-            <div className={classnames("metricToggle", {"metricToggleOff": !this.state.celsius})} onClick={this.onCelsiusClick.bind(this)}>C</div>
-            <div className={classnames("metricToggle", {"metricToggleOff": this.state.celsius})} onClick={this.onFahrenheitClick.bind(this)}>F</div>
-          </div>
-        </div>
 
-        <div className="row">
-          <div className="col-md-6">
-            {this.state.forecast.length === 0 ? <div>Loading...</div> : <Forecast forecastInfo={this.state.forecast} celsiusToggle={this.state.celsius} />}
-          </div>
-          <div className="col-md-6">
-            <div className="detailsWrapper">
+          <div className="row">
+            <div className="col-md-6">
+              {this.state.forecast.length === 0 ? <div>Loading...</div> : <Forecast forecastInfo={this.state.forecast} celsiusToggle={this.state.celsius} />}
+            </div>
+            <div className="col-md-6">
               {this.state.currentObservation.length === 0 ? <div>Loading...</div> : <Details currentObservationInfo={this.state.currentObservation} currentDayDetail={this.state.detailForecastCurrentDay} currentNightDetail={this.state.detailForecastCurrentNight} />}
-            </div>
-            <div className="col-md-12" style={{padding:0}}>
-              {this.state.phases.length === 0 ? <div>Loading...</div> : <SunMoonPhase phasesInfo={this.state.phases}/>}
+              <div className="col-md-12" style={{padding:0}}>
+                {this.state.phases.length === 0 ? <div>Loading...</div> : <SunMoonPhase phasesInfo={this.state.phases}/>}
+              </div>
             </div>
           </div>
-        </div>
 
-      </div>
-      )
+        </div>
+        )
+    }
   }
 }
 

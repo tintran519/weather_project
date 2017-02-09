@@ -1,6 +1,13 @@
-.mainWrapper {
-  margin-left: 2%;
+.mainWrapperDay {
+  padding-left: 2%;
   color: white;
+  background: url('https://i.ytimg.com/vi/YgmIibSnZs0/maxresdefault.jpg') no-repeat center center fixed;
+}
+
+.mainWrapperNight {
+  padding-left: 2%;
+  color: white;
+  background: url('http://wallpapercave.com/wp/kV4kCJw.jpg') no-repeat center center fixed;
 }
 
 #locationName {
@@ -65,12 +72,15 @@ button {
 
 /*==================================*/
 /*Forecast Section*/
-.forecastWrapper,.detailsWrapper,#phaseWrapper {
-  background-color: #115da0;
+.sectionWrapper {
+  background-color: rgba(0,0,0,0.54);
   margin-right: 2%;
   margin-top: 2%;
   width: 98%;
-  border: 1px solid gold;
+}
+
+.sectionWrapper.detail {
+  padding-bottom: 4%;
 }
 
 th {
@@ -100,7 +110,6 @@ i {
   width: 96%;
   text-align: left;
   font-size: 13pt;
-  background-color: #115da0;
   margin-left: 2%;
 }
 
@@ -110,7 +119,7 @@ i {
 }
 
 .textForecastRow {
-  border-bottom: 1px dotted white;
+  border-bottom: 1px dotted rgba(255,255,255,.12);
 }
 
 .forecastToggle, .metricToggle {

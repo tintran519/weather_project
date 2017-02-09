@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../assets/App.css';
-import SearchBar from './SearchBar';
 
 class App extends Component {
 
