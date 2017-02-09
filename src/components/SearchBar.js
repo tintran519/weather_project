@@ -21,8 +21,6 @@ class SearchBar extends React.Component {
   };
 
   selectLocation(item) {
-    console.log(item);
-    // this.props.clickedLocation(item);
     browserHistory.push({
       pathname: '/weather',
       state:{
@@ -52,24 +50,6 @@ class SearchBar extends React.Component {
         _this.setState({ location: '', list: results.RESULTS })
         console.log('API call',results.RESULTS);
       });
-    // let submitLocation = this.state.location;
-    // let link = this.refs.selectedLocation.dataset.link;
-    // let cities = submitLocation.substr(0, submitLocation.indexOf(','));
-    // let states = submitLocation.substr(submitLocation.indexOf(',') + 2);
-
-    // console.log('city and state', cities, states);
-    // console.log('submit',this.state.location);
-    // console.log('ref',this.refs.selectedLocation.dataset.link);
-    // fetch(`/weather/${states}/${cities}?link=${link}`)
-    //   .then(function(response){
-    //     if(response.status >= 400) {
-    //       throw new Error("Bad response from server");
-    //     }
-    //     return response.json();
-    //   })
-    //   .then(function(results) {
-    //     console.log('API call',results);
-    //   });
   }
 
   render() {

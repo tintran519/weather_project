@@ -15,7 +15,7 @@ class SunMoonPhase extends React.Component {
 
   render() {
     return(
-      <div id="phaseWrapper">
+      <div className="sectionWrapper">
         <table id="phaseTable">
           <tbody>
             <tr>
@@ -29,7 +29,7 @@ class SunMoonPhase extends React.Component {
               <td>{this.props.phasesInfo.sunrise.hour}:{this.props.phasesInfo.sunrise.minute}&nbsp;AM</td>
               <td>{this.props.phasesInfo.sunset.hour - 12}:{this.props.phasesInfo.sunset.minute}&nbsp;PM</td>
             </tr>
-            <tr style={{borderTop: '1px dotted white'}}>
+            <tr style={{borderTop: '1px dotted rgba(255,255,255,.12)'}}>
               <td><i className="wi wi-moonrise phaseIcon"></i></td>
               <td><i className="wi wi-moonset phaseIcon"></i></td>
             </tr>

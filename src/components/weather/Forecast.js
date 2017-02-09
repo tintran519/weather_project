@@ -37,11 +37,11 @@ class Forecast extends React.Component {
   }
 
   renderForecast() {
-    console.log(this.state.textForecast)
+    console.log('textforecast',this.state.textForecast)
     if(this.state.tenDayForecast) {
       return this.state.textForecast.map((day,index) =>
         <tbody key={index}>
-          <tr className="forecastRows" style={{borderBottom: '1px dotted white'}} ref={"forecastRow " + index} onClick={this.textForecastToggle.bind(this,index)}>
+          <tr className="forecastRows" style={{borderBottom: '1px dotted rgba(255,255,255,.12)'}} ref={"forecastRow " + index} onClick={this.textForecastToggle.bind(this,index)}>
             <td>{day.date.weekday}</td>
             <td className="tempIcon"><img src={day.icon_url} /></td>
             <td><i style={{display: 'block'}} className="wi wi-humidity"></i><span>{day.pop}%</span></td>
@@ -56,7 +56,7 @@ class Forecast extends React.Component {
     } else {
       return this.state.forecast.simpleforecast.forecastday.slice(0,5).map((day,index) =>
         <tbody key={index}>
-          <tr className="forecastRows" style={{borderBottom: '1px dotted white'}} ref={"forecastRow " + index} onClick={this.textForecastToggle.bind(this,index)}>
+          <tr className="forecastRows" style={{borderBottom: '1px dotted rgba(255,255,255,.12)'}} ref={"forecastRow " + index} onClick={this.textForecastToggle.bind(this,index)}>
             <td>{day.date.weekday}</td>
             <td className="tempIcon"><img src={day.icon_url} /></td>
             <td><i style={{display: 'block'}} className="wi wi-humidity"></i><span>{day.pop}%</span></td>
@@ -76,7 +76,7 @@ class Forecast extends React.Component {
       this.refs["forecastRow " + index].style.borderBottom = 'none'
       this.refs["textForecast " + index].style.display = 'table-row'
     } else {
-      this.refs["forecastRow " + index].style.borderBottom = '1px dotted white'
+      this.refs["forecastRow " + index].style.borderBottom = '1px dotted rgba(255,255,255,.12)'
       this.refs["textForecast " + index].style.display = 'none'
     }
   }
@@ -91,7 +91,7 @@ class Forecast extends React.Component {
 
   render() {
     return (
-    <div className="forecastWrapper">
+    <div className="sectionWrapper">
       <table id="forecastTable">
         <tbody>
           <tr>
