@@ -1,13 +1,13 @@
 .mainWrapperDay {
   padding-left: 2%;
   color: white;
-  background: url('https://i.ytimg.com/vi/YgmIibSnZs0/maxresdefault.jpg') no-repeat center center fixed;
+  background: url('./images/dayBG.jpg') no-repeat center center fixed;
 }
 
 .mainWrapperNight {
   padding-left: 2%;
   color: white;
-  background: url('http://wallpapercave.com/wp/kV4kCJw.jpg') no-repeat center center fixed;
+  background: url('./images/nightBG.jpg') no-repeat center center fixed;
 }
 
 #locationName {

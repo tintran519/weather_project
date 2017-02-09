@@ -27,7 +27,6 @@ class Forecast extends React.Component {
     let textForecast = [];
     this.state.textForecastObj.forEach((day,index) => {
       if(index % 2 === 0) textForecast.push(day)})
-    console.log(textForecast);
 
     //create new array with detailed info & save to state
     let forecastObj = this.state.forecast;
@@ -37,7 +36,6 @@ class Forecast extends React.Component {
   }
 
   renderForecast() {
-    console.log('textforecast',this.state.textForecast)
     if(this.state.tenDayForecast) {
       return this.state.textForecast.map((day,index) =>
         <tbody key={index}>

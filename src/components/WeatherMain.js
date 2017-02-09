@@ -80,7 +80,8 @@ class WeatherMain extends React.Component{
       return(<div>Loading...</div>)
     }else {
       return(
-        <div className={classnames("mainWrapperDay", {"mainWrapperNight": this.state.currentTime.hour >= this.state.phases.sunset.hour})}>
+        <div className={classnames("mainWrapperDay", {"mainWrapperNight":
+          Number(this.state.currentTime.hour) > Number(this.state.phases.sunset.hour) || Number(this.state.currentTime.hour) < Number(this.state.phases.sunrise.hour)})}>
           <div className="row header-top">
             <h1 id="locationName">{this.state.name}</h1>
             <div id="locationChange">

@@ -9,8 +9,6 @@ class SunMoonPhase extends React.Component {
     this.state = {
       phases: this.props.phasesInfo
     }
-
-    console.log(this.props)
   }
 
   render() {
