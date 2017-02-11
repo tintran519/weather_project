@@ -16,7 +16,7 @@ class SearchBar extends React.Component {
 
   renderLocations() {
     return this.state.list.map((location,index) =>
-      <li key={index} ref={location.name} onClick={this.selectLocation.bind(this,location)}>{location.name}</li>
+      <li key={index} ref={location.name} onClick={this.selectLocation.bind(this,location)}><span>{location.name}</span></li>
       )
   };
 
@@ -48,7 +48,6 @@ class SearchBar extends React.Component {
       })
       .then(function(results) {
         _this.setState({ location: '', list: results.RESULTS })
-        console.log('API call',results.RESULTS);
       });
   }
 
@@ -75,6 +74,9 @@ class SearchBar extends React.Component {
         <ul>
           {this.renderLocations()}
         </ul>
+        <div>
+          <img src={require('../assets/images/globe.jpg')} />
+        </div>
       </div>
       );
   }

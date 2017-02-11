@@ -1,10 +1,18 @@
+* {
+  font-family: 'Abhaya Libre', serif;
+}
+
 form, h4 {
   color: white;
 }
 
+form h4 {
+  text-decoration: underline;
+}
+
 .form-group {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 33%;
+  margin-right: 33%;
   margin-bottom: 45px;
 }
 
@@ -16,11 +24,11 @@ ul {
 li {
   color: white;
   list-style: none;
-  padding: 3px;
+  padding: 5px;
   margin-right: 15%;
 }
 
-li:hover {
+li span:hover {
   cursor: pointer;
   color: teal;
 }
