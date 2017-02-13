@@ -14,7 +14,9 @@ class Forecast extends React.Component {
       forecast: this.props.forecastInfo,
       textForecastObj: this.props.forecastInfo.txt_forecast.forecastday,
       textForecast: [],
-      tenDayForecast: true
+      tenDayForecast: true,
+      hourlyForecastObj: this.props.hourlyForecastInfo,
+      hourlyForecastDisplay: 'temperature'
     }
   }
 
@@ -42,7 +44,7 @@ class Forecast extends React.Component {
           <tr className="forecastRows" style={{borderBottom: '1px dotted rgba(255,255,255,.12)'}} ref={"forecastRow " + index} onClick={this.textForecastToggle.bind(this,index)}>
             <td>{day.date.weekday}</td>
             <td className="tempIcon"><img src={day.icon_url} /></td>
-            <td><i style={{display: 'block'}} className="wi wi-humidity"></i><span>{day.pop}%</span></td>
+            <td><i style={{display: 'block'}} className="wi wi-humidity"></i><span className="pop">{day.pop}%</span></td>
             <td className="tempHigh" ref={day.period}>{!this.state.celsius ? day.high.fahrenheit : day.high.celsius}&deg;</td>
             <td className="tempLow">{!this.state.celsius ? day.low.fahrenheit : day.low.celsius}&deg;</td>
           </tr>
@@ -69,6 +71,45 @@ class Forecast extends React.Component {
     }
   };
 
+  renderHour(hourInput) {
+    let hour = Number(hourInput)
+    if(hour > 12) {
+      return hour - 12
+    } else if(hour === 0) {
+      return hour + 12
+    } else {
+      return hour
+    }
+  }
+
+  renderHourlyForecast() {
+    switch(this.state.hourlyForecastDisplay) {
+      case 'temperature':
+        return this.state.hourlyForecastObj.slice(0,25).map((hour,index) =>
+          <div className="hourlyData" key={index}>
+            <div>{this.renderHour(hour.FCTTIME.hour)}&nbsp;{hour.FCTTIME.ampm}</div>
+            <div><img src={hour.icon_url} /></div>
+            <div>{!this.state.celsius ? hour.feelslike.english : hour.feelslike.metric}&deg;</div>
+          </div>
+        )
+        break;
+      case 'precipitation':
+        return this.state.hourlyForecastObj.slice(0,25).map((hour,index) =>
+          <div className="hourlyData" key={index}>
+            <div>{this.renderHour(hour.FCTTIME.hour)}&nbsp;{hour.FCTTIME.ampm}</div>
+            <div><i className="wi wi-humidity"></i></div>
+            <div>{hour.pop}%</div>
+          </div>
+        )
+    }
+  }
+
+  hourlyForecastDisplayOnChange(e) {
+    this.setState({
+      hourlyForecastDisplay: e.target.value
+    });
+  }
+
   textForecastToggle(index) {
     if(this.refs["textForecast " + index].style.display === 'none') {
       this.refs["forecastRow " + index].style.borderBottom = 'none'
@@ -94,6 +135,24 @@ class Forecast extends React.Component {
         <tbody>
           <tr>
             <th colSpan='5'>Forecast</th>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr colSpan='1'>
+            <td id="hourlyForecastHeader">
+              <select style={{background:'none'}} onChange={this.hourlyForecastDisplayOnChange.bind(this)} value={this.state.hourlyForecastDisplay}>
+                <option value="temperature">Temperature</option>
+                <option value="precipitation">Precipitation</option>
+                <option value="wind">Wind</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+        <tbody id="hourlyForecastWrapper">
+          <tr>
+            <td colSpan='5'>
+              {this.renderHourlyForecast()}
+            </td>
           </tr>
         </tbody>
           {this.renderForecast()}

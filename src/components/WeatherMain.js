@@ -27,7 +27,8 @@ class WeatherMain extends React.Component{
       detailForecastCurrentDay: [],
       detailForecastCurrentNight: [],
       phases: [],
-      currentTime: ''
+      currentTime: '',
+      hourlyForecast: []
     }
   }
 
@@ -43,6 +44,7 @@ class WeatherMain extends React.Component{
         return response.json();
       })
       .then((results) => {
+        console.log(results)
         this.setState({
           celsius: false,
           name: results.current_observation.display_location.full,
@@ -61,7 +63,8 @@ class WeatherMain extends React.Component{
           detailForecastCurrentDay: results.forecast.txt_forecast.forecastday[0],
           detailForecastCurrentNight: results.forecast.txt_forecast.forecastday[1],
           phases: results.moon_phase,
-          currentTime: results.moon_phase.current_time
+          currentTime: results.moon_phase.current_time,
+          hourlyForecast: results.hourly_forecast
         })
       })
     }
@@ -108,7 +111,7 @@ class WeatherMain extends React.Component{
 
           <div className="row">
             <div className="col-md-6">
-              {this.state.forecast.length === 0 ? <div>Loading...</div> : <Forecast forecastInfo={this.state.forecast} celsiusToggle={this.state.celsius} />}
+              {this.state.forecast.length === 0 ? <div>Loading...</div> : <Forecast forecastInfo={this.state.forecast} celsiusToggle={this.state.celsius} hourlyForecastInfo={this.state.hourlyForecast} />}
             </div>
             <div className="col-md-6">
               {this.state.currentObservation.length === 0 ? <div>Loading...</div> : <Details currentObservationInfo={this.state.currentObservation} currentDayDetail={this.state.detailForecastCurrentDay} currentNightDetail={this.state.detailForecastCurrentNight} />}
