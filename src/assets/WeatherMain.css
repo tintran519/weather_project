@@ -111,6 +111,26 @@ i {
   text-align: left;
   font-size: 13pt;
   margin-left: 2%;
+  display: block;
+}
+
+#hourlyForecastWrapper {
+  overflow-x: auto;
+  display: block;
+  white-space: nowrap;
+}
+
+.hourlyData {
+  display: inline-block;
+  margin-right: 5%;
+}
+
+.hourlyData div {
+  text-align: center;
+}
+
+.pop {
+  margin-left: 10%;
 }
 
 .forecastRows {
