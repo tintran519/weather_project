@@ -101,6 +101,16 @@ class Forecast extends React.Component {
             <div>{hour.pop}%</div>
           </div>
         )
+        break;
+      case 'wind':
+        return this.state.hourlyForecastObj.slice(0,25).map((hour,index) =>
+          <div className="hourlyData" key={index}>
+            <div>{this.renderHour(hour.FCTTIME.hour)}&nbsp;{hour.FCTTIME.ampm}</div>
+            <div><i className={`wi wi-wind wi-towards-${hour.wdir.dir.toLowerCase()}`}></i></div>
+            <div>{!this.state.celsius ? hour.wspd.english : hour.wspd.metric}</div>
+          </div>
+        )
+        break;
     }
   }
 
