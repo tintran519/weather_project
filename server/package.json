@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "install": "cd .. && npm run build && cd server",
+  "install": "cd .. && npm install && npm run build && cd server",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
+  },
+  "engines": {
+    "node": "6.6.0",
+    "npm": "3.10.8"
   },
   "author": "",
   "license": "ISC"
