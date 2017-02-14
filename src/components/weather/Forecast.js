@@ -1,8 +1,8 @@
 import React,{components} from 'react';
 import '../../assets/WeatherMain.css';
 import classnames from 'classnames';
-import '../../../bower_components/weather-icons/css/weather-icons.css';
-import '../../../bower_components/weather-icons/css/weather-icons-wind.css';
+import '../../assets/bower_components/weather-icons/css/weather-icons.css';
+import '../../assets/bower_components/weather-icons/css/weather-icons-wind.css';
 
 
 class Forecast extends React.Component {
