@@ -27,6 +27,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //define 'dynamic' routes
 app.use('/', routes);
 
+app.use(express.static(path.join(__dirname, '../build')));
+
 //start server
 app.listen(port);
 console.log('Express is now listening on ' + port);
