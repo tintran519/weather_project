@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../assets/WeatherMain.css';
-import '../../../bower_components/weather-icons/css/weather-icons.css';
+import '../../assets/bower_components/weather-icons/css/weather-icons.css';
 
 class SunMoonPhase extends React.Component {
   constructor(props){
