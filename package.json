@@ -3,6 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "dependencies": {
+    "babel": "^6.5.2",
+    "body-parser": "^1.16.0",
+    "bower": "^1.8.0",
+    "classnames": "^2.2.5",
+    "dotenv": "^4.0.0",
+    "es6-promise": "^4.0.5",
+    "express": "^4.14.0",
+    "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.17.4",
+    "request": "^2.79.0"
+  },
   "scripts": {
     "install": "cd client && npm install && npm run build && cd ..",
     "test": "echo \"Error: no test specified\" && exit 1",
