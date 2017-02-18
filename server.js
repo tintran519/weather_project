@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //define 'dynamic' routes
 app.use('/', routes);
 
-app.use(express.static(path.join(__dirname, './build')));
+app.use(express.static(path.join(__dirname, './client/build')));
 
 //start server
 app.listen(port);
