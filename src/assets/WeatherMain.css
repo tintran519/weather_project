@@ -1,3 +1,7 @@
+.row {
+  margin-right: 0%;
+}
+
 .mainWrapperDay {
   padding-left: 2%;
   color: white;
@@ -123,7 +127,8 @@ i {
 
 .hourlyData {
   display: inline-block;
-  margin-right: 5%;
+  margin-right: 2%;
+  margin-left: 2%;
 }
 
 .hourlyData div {

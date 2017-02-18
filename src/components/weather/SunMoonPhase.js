@@ -32,8 +32,8 @@ class SunMoonPhase extends React.Component {
               <td><i className="wi wi-moonset phaseIcon"></i></td>
             </tr>
             <tr>
-              <td>{this.props.phasesInfo.moonrise.hour - 12}:{this.props.phasesInfo.moonrise.minute}&nbsp;PM</td>
-              <td>{this.props.phasesInfo.moonset.hour}:{this.props.phasesInfo.moonset.minute}&nbsp;AM</td>
+              <td>{this.props.phasesInfo.moonrise.hour > 12 ? this.props.phasesInfo.moonrise.hour - 12 : this.props.phasesInfo.moonrise.hour}:{this.props.phasesInfo.moonrise.minute}&nbsp;{this.props.phasesInfo.moonrise.hour > 11 ? 'PM' : 'AM'}</td>
+              <td>{this.props.phasesInfo.moonset.hour > 12 ? this.props.phasesInfo.moonset.hour - 12 : this.props.phasesInfo.moonset.hour}:{this.props.phasesInfo.moonset.minute}&nbsp;{this.props.phasesInfo.moonset.hour > 11 ? 'PM' : 'AM'}</td>
             </tr>
           </tbody>
         </table>
