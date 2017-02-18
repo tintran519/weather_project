@@ -14,7 +14,7 @@ var app = express();
 require('dotenv').config();
 
 //set port
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 9000;
 
 // Configure the application (and set it's title!).
 app.set('title', env.TITLE);
