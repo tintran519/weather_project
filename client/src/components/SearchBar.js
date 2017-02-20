@@ -22,7 +22,7 @@ class SearchBar extends React.Component {
 
   selectLocation(item) {
     browserHistory.push({
-      pathname: '/weather',
+      pathname: `/weather/${item.c.toLowerCase()}/${item.name.split(", ")[1].toLowerCase()}/${item.name.split(", ")[0].toLowerCase()}-${item.zmw.split('').splice(0,5).join('')}`,
       state:{
         selectedLocation: item
       }
