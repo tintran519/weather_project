@@ -8,6 +8,6 @@ import WeatherMain from './components/WeatherMain';
 export default(
   <Route path="/" component={App}>
     <IndexRoute component={SearchBar} />
-    <Route path="weather" component={WeatherMain} />
+    <Route path="weather/:country/:state/:zmw" component={WeatherMain} />
   </Route>
   )

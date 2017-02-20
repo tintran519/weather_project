@@ -43,7 +43,7 @@ class WeatherMain extends React.Component{
       }
         return response.json();
       })
-      .then((results) => {console.log(results)
+      .then((results) => {
         this.setState({
           celsius: false,
           name: results.current_observation.display_location.full,
