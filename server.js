@@ -6,12 +6,11 @@ var bodyParser = require('body-parser');
 var env    = require('./config/environment');
 var routes = require('./config/routes');
 
+//load secrets from .env
+require('dotenv').config();
 
 //instantiate server app
 var app = express();
-
-//load secrets from .env
-require('dotenv').config();
 
 //set port
 var port = process.env.PORT || 9000;
