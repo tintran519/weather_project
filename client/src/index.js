@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
 import './assets/index.css';
 
 import { Router, browserHistory } from 'react-router';

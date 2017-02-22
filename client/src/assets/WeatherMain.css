@@ -74,8 +74,10 @@ button {
   font-size: large;
 }
 
-/*==================================*/
+/*=============================*/
 /*Forecast Section*/
+/*=============================*/
+
 .sectionWrapper {
   background-color: rgba(0,0,0,0.54);
   margin-right: 2%;
@@ -108,10 +110,11 @@ i {
   font-size: 20pt;
 }
 
-/*=============================*/
+/*===========================*/
 /*Forecast Table*/
+/*===========================*/
 
-#forecastTable, #detailsTable {
+#forecastTable, #detailsTable, #mapTable {
   width: 96%;
   text-align: left;
   font-size: 13pt;
@@ -158,6 +161,8 @@ i {
 
 /*=============================*/
 /*Detail Table*/
+/*=============================*/
+
 #detailIcon {
   padding-right: 35px;
 }
@@ -190,7 +195,8 @@ i {
 }
 
 /*====================*/
-/*Phases*/
+/*Phases Table*/
+/*====================*/
 
 #phaseTable {
   margin-left: 2%;
@@ -200,4 +206,14 @@ i {
 .phaseIcon {
   margin-left: 0%;
   font-size: 35pt;
+}
+
+/*===================*/
+/*Maps Table*/
+/*===================*/
+
+#mapTable td {
+  height: 320px;
+  padding-top: 5px;
+  padding-bottom: 15px;
 }

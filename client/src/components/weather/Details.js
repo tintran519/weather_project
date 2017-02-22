@@ -26,7 +26,7 @@ class Details extends React.Component {
               </tr>
               <tr>
                 <td rowSpan='4' id="detailIcon">
-                  <img src={this.state.currentTempIcon} />
+                  <img src={this.state.currentTempIcon} role="presentation" />
                 </td>
                 <td className="detailLabel">Feels like</td>
                 <td className="detailValue">{this.state.feelsLike}&deg;</td>

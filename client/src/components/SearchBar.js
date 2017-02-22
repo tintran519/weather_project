@@ -1,4 +1,4 @@
-import React, {components} from 'react';
+import React from 'react';
 import '../assets/SearchBar.css'
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
@@ -75,7 +75,7 @@ class SearchBar extends React.Component {
           {this.renderLocations()}
         </ul>
         <div>
-          <img src={require('../assets/images/globe.jpg')} />
+          <img src={require('../assets/images/globe.jpg')} role="presentation" />
         </div>
       </div>
       );

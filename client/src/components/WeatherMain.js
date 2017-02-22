@@ -1,9 +1,10 @@
-import React,{components} from 'react';
+import React from 'react';
 import '../assets/WeatherMain.css';
 import { Link } from 'react-router';
 import Forecast from './weather/Forecast';
 import Details from './weather/Details';
 import SunMoonPhase from './weather/SunMoonPhase';
+import Maps from './weather/Maps';
 import classnames from 'classnames';
 
 class WeatherMain extends React.Component{
@@ -28,7 +29,9 @@ class WeatherMain extends React.Component{
       detailForecastCurrentNight: [],
       phases: [],
       currentTime: '',
-      hourlyForecast: []
+      hourlyForecast: [],
+      lat: this.props.location.state.selectedLocation.lat,
+      lon: this.props.location.state.selectedLocation.lon
     }
   }
 
@@ -95,7 +98,7 @@ class WeatherMain extends React.Component{
           </div>
 
           <div className="row header-bot">
-            <img src={this.state.currentTempIcon} />
+            <img src={this.state.currentTempIcon} role="presentation" />
             <span id="tempDescr">{this.state.currentTempDescr}</span>
             <div>
               <span id="currentHigh">&uarr;&nbsp;{!this.state.celsius ? this.state.currentHighF : this.state.currentHighC}&deg;</span>
@@ -116,6 +119,9 @@ class WeatherMain extends React.Component{
               {this.state.currentObservation.length === 0 ? <div>Loading...</div> : <Details currentObservationInfo={this.state.currentObservation} currentDayDetail={this.state.detailForecastCurrentDay} currentNightDetail={this.state.detailForecastCurrentNight} />}
               <div className="col-md-12" style={{padding:0}}>
                 {this.state.phases.length === 0 ? <div>Loading...</div> : <SunMoonPhase phasesInfo={this.state.phases}/>}
+              </div>
+              <div className="col-md-12" style={{padding:0}}>
+                {this.state.phases.length === 0 ? <div>Loading...</div> : <Maps coordinatesInfo={{lat: this.state.lat, lon: this.state.lon}}/>}
               </div>
             </div>
           </div>

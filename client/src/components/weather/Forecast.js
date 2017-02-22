@@ -1,4 +1,4 @@
-import React,{components} from 'react';
+import React from 'react';
 import '../../assets/WeatherMain.css';
 import classnames from 'classnames';
 import '../../assets/bower_components/weather-icons/css/weather-icons.css';
@@ -43,7 +43,7 @@ class Forecast extends React.Component {
         <tbody key={index}>
           <tr className="forecastRows" style={{borderBottom: '1px dotted rgba(255,255,255,.12)'}} ref={"forecastRow " + index} onClick={this.textForecastToggle.bind(this,index)}>
             <td>{day.date.weekday}</td>
-            <td className="tempIcon"><img src={day.icon_url} /></td>
+            <td className="tempIcon"><img src={day.icon_url} role="presentation" /></td>
             <td><i style={{display: 'block'}} className="wi wi-humidity"></i><span className="pop">{day.pop}%</span></td>
             <td className="tempHigh" ref={day.period}>{!this.state.celsius ? day.high.fahrenheit : day.high.celsius}&deg;</td>
             <td className="tempLow">{!this.state.celsius ? day.low.fahrenheit : day.low.celsius}&deg;</td>
@@ -58,7 +58,7 @@ class Forecast extends React.Component {
         <tbody key={index}>
           <tr className="forecastRows" style={{borderBottom: '1px dotted rgba(255,255,255,.12)'}} ref={"forecastRow " + index} onClick={this.textForecastToggle.bind(this,index)}>
             <td>{day.date.weekday}</td>
-            <td className="tempIcon"><img src={day.icon_url} /></td>
+            <td className="tempIcon"><img src={day.icon_url} role="presentation" /></td>
             <td><i style={{display: 'block'}} className="wi wi-humidity"></i><span>{day.pop}%</span></td>
             <td className="tempHigh" ref={day.period}>{!this.state.celsius ? day.high.fahrenheit : day.high.celsius}&deg;</td>
             <td className="tempLow">{!this.state.celsius ? day.low.fahrenheit : day.low.celsius}&deg;</td>
@@ -88,11 +88,10 @@ class Forecast extends React.Component {
         return this.state.hourlyForecastObj.slice(0,25).map((hour,index) =>
           <div className="hourlyData" key={index}>
             <div>{this.renderHour(hour.FCTTIME.hour)}&nbsp;{hour.FCTTIME.ampm}</div>
-            <div><img src={hour.icon_url} /></div>
+            <div><img src={hour.icon_url} role="presentation" /></div>
             <div>{!this.state.celsius ? hour.feelslike.english : hour.feelslike.metric}&deg;</div>
           </div>
         )
-        break;
       case 'precipitation':
         return this.state.hourlyForecastObj.slice(0,25).map((hour,index) =>
           <div className="hourlyData" key={index}>
@@ -101,7 +100,6 @@ class Forecast extends React.Component {
             <div>{hour.pop}%</div>
           </div>
         )
-        break;
       case 'wind':
         return this.state.hourlyForecastObj.slice(0,25).map((hour,index) =>
           <div className="hourlyData" key={index}>
@@ -110,7 +108,8 @@ class Forecast extends React.Component {
             <div>{!this.state.celsius ? hour.wspd.english : hour.wspd.metric}</div>
           </div>
         )
-        break;
+      default:
+        return <div>Loading...</div>
     }
   }
 
