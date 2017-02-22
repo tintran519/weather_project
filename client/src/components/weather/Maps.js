@@ -24,13 +24,23 @@ class Maps extends React.Component {
 
   render() {
     return(
-      <div style={{width:'500px', height:'500px'}}>
-        <h2>Map here</h2>
-        <GoogleMap
-          bootstrapURLKeys={{key: 'AIzaSyDkUrLdM6wL9QkBCTzjWxMm9le-TMMkZ4U'}}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}>
-        </GoogleMap>
+      <div className="sectionWrapper">
+        <table id="mapTable">
+          <tbody>
+            <tr>
+              <th colSpan='3'>Map</th>
+            </tr>
+            <tr>
+              <td colSpan='3' rowSpan='3'>
+                <GoogleMap
+                  bootstrapURLKeys={{key: 'AIzaSyDkUrLdM6wL9QkBCTzjWxMm9le-TMMkZ4U'}}
+                  defaultCenter={this.props.center}
+                  defaultZoom={this.props.zoom}>
+                </GoogleMap>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       );
   }

@@ -111,7 +111,7 @@ i {
 /*=============================*/
 /*Forecast Table*/
 
-#forecastTable, #detailsTable {
+#forecastTable, #detailsTable, #mapTable {
   width: 96%;
   text-align: left;
   font-size: 13pt;
@@ -158,6 +158,8 @@ i {
 
 /*=============================*/
 /*Detail Table*/
+/*=============================*/
+
 #detailIcon {
   padding-right: 35px;
 }
@@ -191,6 +193,7 @@ i {
 
 /*====================*/
 /*Phases*/
+/*====================*/
 
 #phaseTable {
   margin-left: 2%;
@@ -200,4 +203,14 @@ i {
 .phaseIcon {
   margin-left: 0%;
   font-size: 35pt;
+}
+
+/*===================*/
+/*Map*/
+/*===================*/
+
+#mapTable td {
+  height: 320px;
+  padding-top: 5px;
+  padding-bottom: 15px;
 }
