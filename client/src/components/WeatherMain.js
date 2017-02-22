@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import Forecast from './weather/Forecast';
 import Details from './weather/Details';
 import SunMoonPhase from './weather/SunMoonPhase';
+import Maps from './weather/Maps';
 import classnames from 'classnames';
 
 class WeatherMain extends React.Component{
@@ -28,12 +29,14 @@ class WeatherMain extends React.Component{
       detailForecastCurrentNight: [],
       phases: [],
       currentTime: '',
-      hourlyForecast: []
+      hourlyForecast: [],
+      lat: this.props.location.state.selectedLocation.lat,
+      lon: this.props.location.state.selectedLocation.lon
     }
   }
 
   //load weather API
-  componentWillMount() {
+  componentWillMount() {console.log(this.state)
     let _this = this;
     fetch(`/weather/${this.props.location.state.selectedLocation.zmw}`)
       .then((response) => {
@@ -116,6 +119,9 @@ class WeatherMain extends React.Component{
               {this.state.currentObservation.length === 0 ? <div>Loading...</div> : <Details currentObservationInfo={this.state.currentObservation} currentDayDetail={this.state.detailForecastCurrentDay} currentNightDetail={this.state.detailForecastCurrentNight} />}
               <div className="col-md-12" style={{padding:0}}>
                 {this.state.phases.length === 0 ? <div>Loading...</div> : <SunMoonPhase phasesInfo={this.state.phases}/>}
+              </div>
+              <div className="col-md-12" style={{padding:0}}>
+                {this.state.phases.length === 0 ? <div>Loading...</div> : <Maps coordinatesInfo={{lat: this.state.lat, lon: this.state.lon}}/>}
               </div>
             </div>
           </div>

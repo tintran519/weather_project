@@ -46,7 +46,7 @@ class SearchBar extends React.Component {
         }
         return response.json();
       })
-      .then(function(results) {
+      .then(function(results) {console.log(results);
         _this.setState({ location: '', list: results.RESULTS })
       });
   }
