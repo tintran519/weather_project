@@ -74,8 +74,10 @@ button {
   font-size: large;
 }
 
-/*==================================*/
+/*=============================*/
 /*Forecast Section*/
+/*=============================*/
+
 .sectionWrapper {
   background-color: rgba(0,0,0,0.54);
   margin-right: 2%;
@@ -108,8 +110,9 @@ i {
   font-size: 20pt;
 }
 
-/*=============================*/
+/*===========================*/
 /*Forecast Table*/
+/*===========================*/
 
 #forecastTable, #detailsTable, #mapTable {
   width: 96%;
@@ -192,7 +195,7 @@ i {
 }
 
 /*====================*/
-/*Phases*/
+/*Phases Table*/
 /*====================*/
 
 #phaseTable {
@@ -206,7 +209,7 @@ i {
 }
 
 /*===================*/
-/*Map*/
+/*Maps Table*/
 /*===================*/
 
 #mapTable td {

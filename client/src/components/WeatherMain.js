@@ -1,4 +1,4 @@
-import React,{components} from 'react';
+import React from 'react';
 import '../assets/WeatherMain.css';
 import { Link } from 'react-router';
 import Forecast from './weather/Forecast';
@@ -36,7 +36,7 @@ class WeatherMain extends React.Component{
   }
 
   //load weather API
-  componentWillMount() {console.log(this.state)
+  componentWillMount() {
     let _this = this;
     fetch(`/weather/${this.props.location.state.selectedLocation.zmw}`)
       .then((response) => {
@@ -98,7 +98,7 @@ class WeatherMain extends React.Component{
           </div>
 
           <div className="row header-bot">
-            <img src={this.state.currentTempIcon} />
+            <img src={this.state.currentTempIcon} role="presentation" />
             <span id="tempDescr">{this.state.currentTempDescr}</span>
             <div>
               <span id="currentHigh">&uarr;&nbsp;{!this.state.celsius ? this.state.currentHighF : this.state.currentHighC}&deg;</span>

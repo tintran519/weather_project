@@ -1,26 +1,20 @@
 import React from 'react';
 import '../../assets/WeatherMain.css';
 import GoogleMap from 'google-map-react';
+import LocationMarker from './maps/LocationMarker';
 
 class Maps extends React.Component {
 
-  static defaultProps = {
-    center: {
-      lat: 59.938043,
-      lng: 30.337157
-    },
-    zoom: 6,
-  }
-
   constructor(props) {
     super(props);
+
+    this.state = {
+      center: {
+        lat: Number(this.props.coordinatesInfo.lat),
+        lng: Number(this.props.coordinatesInfo.lon)
+      }
+    }
   }
-
-  // componentDidMount() {
-  //   console.log(this.props);
-  //   const { lat, lon } = this.props.coordinatesInfo
-  // }
-
 
   render() {
     return(
@@ -34,8 +28,9 @@ class Maps extends React.Component {
               <td colSpan='3' rowSpan='3'>
                 <GoogleMap
                   bootstrapURLKeys={{key: 'AIzaSyDkUrLdM6wL9QkBCTzjWxMm9le-TMMkZ4U'}}
-                  defaultCenter={this.props.center}
-                  defaultZoom={this.props.zoom}>
+                  defaultCenter={this.state.center}
+                  defaultZoom={7}>
+                  <LocationMarker lat={this.state.center.lat} lng={this.state.center.lng} text={'A'}/>
                 </GoogleMap>
               </td>
             </tr>
